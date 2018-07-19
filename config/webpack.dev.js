@@ -63,6 +63,25 @@ module.exports = {
                 ]
             },
             {
+                test: /\.pug$/,
+                use: [
+                    {
+                        loader: 'pug-loader'
+                    }
+                ]
+            },
+            {
+                test: /\.hbs$/,
+                use: [
+                    {
+                        loader: 'handlebars-loader',
+                        query: {
+                            inlineRequires: '/images/'
+                        }
+                    }
+                ]
+            },
+            {
                 test: /\.(jpg|gif|png)$/,
                 use: [
                     {
@@ -78,7 +97,8 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HTMLWebpackPlugin({
-            template: "./src/index.html"
+            template: "./src/index.hbs",
+            title: "lol"
         })
     ]
 }
