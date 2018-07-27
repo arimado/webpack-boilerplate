@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node", // how ts finds files, looks in node_modules for non relative files
+    "target": "es5", // what final output,
+    "lib": ["es5", "es6", "dom"], // need these to transpile
+    "sourceMap": true,
+    "experimentalDecorators": true, // angular uses decorators
+    "emitDecoratorMetadata": true // angular uses decorators
+  },
+  "vscode": {
+    "rewriteTsconfig": false
+  }
+}
