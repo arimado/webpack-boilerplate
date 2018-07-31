@@ -118,7 +118,7 @@ module.exports = {
                                             // allows webpack to skip System.import and let angular handle it
         ),
         new HTMLWebpackPlugin({
-            template: "./src/index.hbs",
+            template: "./src/index.html",
             title: "lol"
         })
     ]
