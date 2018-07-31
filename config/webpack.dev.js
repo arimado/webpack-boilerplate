@@ -7,13 +7,17 @@ module.exports = {
         main: [
             /*
              * webpack adds a polyfill before the actual code
-             * ie11 needs it because it cant even run the transpiled code 
+             * ie11 needs it because it cant even run the transpiled code
              * that babel gives you
              */
-            "core-js/fn/promise", 
-            "./src/main.js"
+            "core-js/fn/promise",
+            "./src/main"
         ],
-        ts: ["./src/index.ts"]
+        polyfills: ["./src/angular-polyfills"],
+        angular: ["./src/angular"]
+    },
+    resolve: {
+        extensions: [".js", ".ts"]
     },
     mode: "development",
     output: {
@@ -24,6 +28,7 @@ module.exports = {
     devServer: {
         contentBase: "dist",
         overlay: true,
+        historyApiFallback: true,
         hot: true,
         stats: {
             colors: true
@@ -106,6 +111,12 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core/,           //any angular-core file
+            path.join(__dirname, "./src")   // make the context the current src
+                                            // allows webpack to skip System.import and let angular handle it
+        ),
         new HTMLWebpackPlugin({
             template: "./src/index.hbs",
             title: "lol"
