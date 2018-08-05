@@ -1,27 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Counter from './counter'
-import { AppContainer } from 'react-hot-loader'; 
+import Vue from 'vue';
+import App from './App.vue';
 
-/**
- * AppContainer
- * adds a 'hot' property to any incoming module as it is being loaded
- */
+new Vue({
+   el: '#app' 
+});
 
-function render(Component) {
-    ReactDOM.render(
-    <AppContainer>
-        <Counter />
-    </AppContainer>
-    , document.getElementById('react-root')
-    );
-}
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import Counter from './counter'
+// import { AppContainer } from 'react-hot-loader';
 
-render(Counter);
+// /**
+//  * AppContainer
+//  * adds a 'hot' property to any incoming module as it is being loaded
+//  */
 
-if(module.hot) {
-    module.hot.accept("./counter.js", () => {
-        const NewCounter = require("./counter.js").default
-        render(NewCounter);
-    });
-}
+// function render(Component) {
+//     ReactDOM.render(
+//     <AppContainer>
+//         <Counter />
+//     </AppContainer>
+//     , document.getElementById('react-root')
+//     );
+// }
+
+// render(Counter);
+
+// if(module.hot) {
+//     module.hot.accept("./counter.js", () => {
+//         const NewCounter = require("./counter.js").default
+//         render(NewCounter);
+//     });
+// }
